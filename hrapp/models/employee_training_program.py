@@ -15,4 +15,4 @@ class EmployeeTrainingProgram(models.Model):
         verbose_name_plural = ("Employee_Computers")
 
     def get_absolute_url(self):
-        return reverse("Employee_Training_Program_detail", kwargs={"pk": self.pk})
+        return reverse("employee_training_program_detail", kwargs={"pk": self.pk})

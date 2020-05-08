@@ -27,4 +27,4 @@ class Computer(models.Model):
         return self.make
 
     def get_absolute_url(self):
-        return reverse("Computer_detail", kwargs={"pk": self.pk})
+        return reverse("computer_detail", kwargs={"pk": self.pk})
