@@ -11,7 +11,7 @@ def get_department():
         db_cursor.execute("""
         SELECT
         d.id,
-        d.dept_name,
+        d.department_name,
         d.budget
         FROM hrapp_department d
         """)
@@ -22,10 +22,10 @@ def get_department():
 
 def department_form(request):
     if request.method == 'GET':
-        # departments = get_department()
+        departments = get_department()
         template = 'departments/form.html'
         context = {
-            # 'all_departments': departments
+            'all_departments': departments
         }
 
         return render(request, template, context)

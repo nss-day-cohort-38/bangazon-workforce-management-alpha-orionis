@@ -13,7 +13,7 @@ def get_department(department_id):
         db_cursor.execute("""
         SELECT
         d.id,
-        d.dept_name,
+        d.department_name,
         d.budget,
         e.first_name,
         e.last_name,

@@ -35,7 +35,7 @@ def department_list(request):
                 all_departments.append(department)
 
 
-            template = 'departments/department_list.html'
+            template = 'departments/list.html'
             context = {
                 'departments': all_departments
             }
