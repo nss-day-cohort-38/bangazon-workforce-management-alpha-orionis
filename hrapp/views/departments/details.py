@@ -17,16 +17,16 @@ def get_department(department_id):
         d.budget,
         e.first_name,
         e.last_name,
-        e.department_id	
+        e.id	
         FROM hrapp_department d
         LEFT JOIN hrapp_employee e
-        ON e.department_id = d.id
+        ON e.id = d.id
         """, ( ))
 
         department = db_cursor.fetchone()
         return department
 
-@login_required
+# @login_required
 def department_details(request, department_id):
     if request.method == 'GET':
         department = get_department(department_id)
