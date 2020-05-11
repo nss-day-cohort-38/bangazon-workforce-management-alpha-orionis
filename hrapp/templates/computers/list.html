@@ -6,7 +6,9 @@
 <ol>
 {% for computer in all_computers %}
     <li>
-        <p>{{ computer.make }}</p>
+        <a href="{% url 'hrapp:computer_details' computer.id %}">
+            <p>{{ computer.make }}</p>
+        <a/>
     </li>
 {% endfor %}
 </ol>
