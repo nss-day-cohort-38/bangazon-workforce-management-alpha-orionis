@@ -1,0 +1,9 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+    <h1>Add New Computer</h1>
+
+    <form action="{% url 'hrapp:computer_form' %}" method="POST">
+        <fieldset></fieldset>
+    </form>
+{% endblock content %}
