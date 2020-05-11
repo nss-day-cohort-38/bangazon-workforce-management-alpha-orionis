@@ -25,7 +25,7 @@ def training_program_list(request):
 
             for row in dataset:
                 program = TrainingProgram()
-                program.tile = row['title']
+                program.title = row['title']
                 program.start_date = row['start_date']
                 program.end_date = row['end_date']
                 program.capacity = row['start_date']
