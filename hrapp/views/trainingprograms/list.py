@@ -1,7 +1,7 @@
 import sqlite3
 from django.shortcuts import render, redirect, reverse
 from hrapp.models import TrainingProgram
-from ..connection import Connection
+from ..connection import Connection   
 
 def training_program_list(request):
     if request.method == 'GET':
@@ -11,13 +11,14 @@ def training_program_list(request):
 
             
             db_cursor.execute("""
-            select
+            SELECT
                 etp.id,
                 etp.title,
                 etp.start_date,
                 etp.end_date,
                 etp.capacity
-            from hrapp_trainingprogram etp
+            FROM hrapp_trainingprogram etp
+            WHERE etp.start_date >= DATE()
             """)
 
             all_programs = []
@@ -30,6 +31,7 @@ def training_program_list(request):
                 program.end_date = row['end_date']
                 program.capacity = row['start_date']
 
+                
                 all_programs.append(program)
 
         template = 'trainingprograms/list.html'
