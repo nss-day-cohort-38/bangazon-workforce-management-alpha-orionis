@@ -7,11 +7,13 @@
 </form>
 
 <ol>
-{% for program in programs %}
+    {% for program in programs %}
     <li>
-        <p>{{ program.title }}</p>
+        <p>
+            <a href="{% url 'hrapp:training' program.id %}"> {{ program.title }} </a>
+        </p>
         Starting Date: {{program.start_date}}
     </li>
-{% endfor %}
+    {% endfor %}
 </ol>
 {% endblock content %}
