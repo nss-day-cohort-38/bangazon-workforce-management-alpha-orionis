@@ -1,0 +1,18 @@
+  
+{% extends 'shared/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<h1>Departments</h1>
+
+<ol>
+{% for department in departments %}
+    <li>
+        <a href="{% url 'hrapp:department' department.id %}">{{ department.dept_name }}</a>
+        Total Budget: {{department.budget}}
+    </br>Employee Count: {{department.emp_count }}
+    </li>
+{% endfor %}
+</ol>
+{% endblock content %}
