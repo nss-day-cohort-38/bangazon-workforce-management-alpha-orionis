@@ -26,7 +26,7 @@ def get_department(department_id):
         department = db_cursor.fetchone()
         return department
 
-# @login_required
+@login_required
 def department_details(request, department_id):
     if request.method == 'GET':
         department = get_department(department_id)
