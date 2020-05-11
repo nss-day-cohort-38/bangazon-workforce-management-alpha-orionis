@@ -3,7 +3,20 @@
 {% block content %}
     <h1>Add New Computer</h1>
 
-    <form action="{% url 'hrapp:computer_form' %}" method="POST">
-        <fieldset></fieldset>
+    <form action="{% url 'hrapp:computer_list' %}" method="POST">
+        <fieldset>
+            <label for="make">Make:</label>
+            <input id="make" type="text" name="make">
+        </fieldset>
+        <fieldset>
+            <label for="purchaseDate">Purchase Date:</label>
+            <input id="purchaseDate" type="text" name="purchaseDate">
+        </fieldset>
+        <fieldset>
+            <label for="manufacturer">Manufacturer:</label>
+            <input id="manufacturer" type="text" name="manufacturer">
+        </fieldset>
+
+        <input type="submit" value="Create" />
     </form>
 {% endblock content %}
