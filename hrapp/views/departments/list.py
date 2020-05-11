@@ -13,10 +13,10 @@ def department_list(request):
 
 
             db_cursor.execute("""
-            SELECT COUNT(e.id) emp_count, dept_name, budget, d.id
+            SELECT department_name, budget, d.id
             FROM hrapp_department d
             LEFT JOIN hrapp_employee e
-            ON e.department_id = d.id
+            ON e.id = d.id
             GROUP BY d.id;
             """)
 
@@ -28,7 +28,7 @@ def department_list(request):
             for row in dataset:
                 department = Department()
                 department.id = row['id']
-                department.dept_name = row['dept_name']
+                department.department_name = row['department_name']
                 department.budget = row['budget']
 
 
