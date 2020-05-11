@@ -7,7 +7,7 @@
 {% for employee in employees %}
     <li>
         <p>{{ employee }}</p>
-        Current computer: {{employee.computer}}
+        Department: {{employee.department.department_name}}
     </li>
 {% endfor %}
 </ol>
