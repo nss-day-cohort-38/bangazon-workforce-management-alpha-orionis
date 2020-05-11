@@ -8,6 +8,7 @@
         <h1>Create Training Program</h1>
 
         <form action="{% url 'hrapp:training' %}" method="post">
+            {% csrf_token %}
             <fieldset>
                 <label for="title">Title: </label>
                 <input type="text" id="title" name="title" value="{{program.title}}">
@@ -15,12 +16,12 @@
             
             <fieldset>
                 <label for="start_date">Starting Date: </label>
-                <input type="datetime" id="start_date" name="start_date" value="{{program.start_date}}">
+                <input type="date" id="start_date" name="start_date" value="{{program.start_date}}">
             </fieldset>
             
             <fieldset>
                 <label for="end_date">Ending Date: </label>
-                <input type="datetime" id="end_date" name="end_date" value="{{program.end_date}}">
+                <input type="date" id="end_date" name="end_date" value="{{program.end_date}}">
             </fieldset>
             
             <fieldset>
