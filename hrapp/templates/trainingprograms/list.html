@@ -10,7 +10,7 @@
     {% for program in programs %}
     <li>
         <p>
-            <a href="{% url 'hrapp:training' program.id %}"> {{ program.title }} </a>
+            <a href="{% url 'hrapp:training_detail' program.id %}"> {{ program.title }} </a>
         </p>
         Starting Date: {{program.start_date}}
     </li>

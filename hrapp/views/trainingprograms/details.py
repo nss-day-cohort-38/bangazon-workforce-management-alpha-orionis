@@ -12,10 +12,10 @@ def get_program(program_id):
 
         db_cursor.execute("""
         SELECT
-            p.id
-            p.title
-            p.start_date
-            p.end_date
+            p.id,
+            p.title,
+            p.start_date,
+            p.end_date,
             p.capacity
         FROM hrapp_trainingprogram p
         WHERE p.id = ?
