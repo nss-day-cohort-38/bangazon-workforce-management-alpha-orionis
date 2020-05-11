@@ -2,6 +2,9 @@
 
 {% block content %}
 <h1>Training Programs</h1>
+<form action="{% url 'hrapp:training_form' %}" method='GET'>
+    <button>Create New Program</button>
+</form>
 
 <ol>
 {% for program in programs %}
