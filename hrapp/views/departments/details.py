@@ -20,7 +20,7 @@ def get_department(department_id):
         e.department_id	
         FROM hrapp_department d
         LEFT JOIN hrapp_employee e
-        ON e.department_id = d.id;
+        ON e.department_id = d.id
         """, ( ))
 
         department = db_cursor.fetchone()
