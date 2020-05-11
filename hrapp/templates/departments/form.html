@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Departments</title>
+    </head>
+
+    <body>
+        <h1>Create Department</h1>
+
+        <form action="{% url 'hrapp:department_list' %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+                <label>Department Name: </label>
+                <input id="department_name" type="text" name="department_name">
+            </fieldset>
+            <fieldset>
+                <label>Department Budget: </label>
+                <input id="budget" type="text" name="budget">
+            </fieldset>
+
+            <input type="submit" value="Create Department">
+        </form>
+    </body>
+</html>
