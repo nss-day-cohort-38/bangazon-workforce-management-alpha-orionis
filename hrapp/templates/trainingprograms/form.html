@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HrApp</title>
+    </head>
+
+    <body>
+        <h1>Create Training Program</h1>
+
+        <form action="{% url 'hrapp:training' %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+                <label for="title">Title: </label>
+                <input type="text" id="title" name="title" value="{{program.title}}">
+            </fieldset>
+            
+            <fieldset>
+                <label for="start_date">Starting Date: </label>
+                <input type="date" id="start_date" name="start_date" value="{{program.start_date}}">
+            </fieldset>
+            
+            <fieldset>
+                <label for="end_date">Ending Date: </label>
+                <input type="date" id="end_date" name="end_date" value="{{program.end_date}}">
+            </fieldset>
+            
+            <fieldset>
+                <label for="capacity">Capacity: </label>
+                <input type="number" id="capacity" name="capacity" value="{{program.capacity}}">
+            </fieldset>
+
+            <input type="submit" value="Submit" />
+
+        </form>
+    </body>
+</html>
