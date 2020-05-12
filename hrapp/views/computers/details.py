@@ -56,6 +56,9 @@ def computer_details(request, computer_id):
             with sqlite3.connect(Connection.db_path) as conn:
                 db_cursor = conn.cursor()
 
+                # Thinking I will need to add a conditional to the 
+                # SQL query like "AND assign_date = NULL" from the 
+                # join table.
                 db_cursor.execute("""
                 DELETE FROM hrapp_computer
                 WHERE id = ?
