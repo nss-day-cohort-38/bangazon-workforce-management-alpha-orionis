@@ -20,12 +20,12 @@ def get_program(program_id):
             p.capacity,
             e.first_name,
             e.last_name,
-            etp.id,
+            etp.id AS etpid,
             etp.employee_id,
             etp.training_program_id
         FROM hrapp_trainingprogram p
-        JOIN hrapp_employeetrainingprogram etp ON etp.training_program_id = p.id
-        JOIN hrapp_employee e ON e.id = etp.employee_id
+        LEFT JOIN hrapp_employeetrainingprogram etp ON etp.training_program_id = p.id
+        LEFT JOIN hrapp_employee e ON e.id = etp.employee_id
         WHERE p.id = ?
         """, (program_id,))
 
@@ -55,7 +55,6 @@ def get_program(program_id):
                 employee.last_name = tuples[6]
                 tprogram.employees_names.append(employee)
 
-    print("XXXXXXXXXXXXXXXX", tprogram.employees_names)
     return tprogram
 
 
@@ -74,7 +73,7 @@ def program_details(request, program_id):
         form_data = request.POST
 
         if (
-            "actual method" in form_data
+            "actual_method" in form_data
             and form_data["actual_method"] == "DELETE"
         ):
             with sqlite3.connect(Connection.db_path) as conn:
@@ -84,6 +83,23 @@ def program_details(request, program_id):
                 DELETE FROM hrapp_trainingprogram
                 WHERE id = ?
                 """, (program_id))
+        
+        if ("actual_method" in form_data
+            and form_data["actual_method"] == "PUT"
+        ):
+            with sqlite3.connect(Connection.db_path) as conn:
+                db_cursor = conn.cursor()
+
+                db_cursor.execute("""
+                UPDATE hrapp_trainingprogram
+                SET title = ?,
+                    start_date = ?,
+                    end_date = ?,
+                    capacity = ?
+                WHERE id = ?
+                """,
+                (form_data['title'], form_data['start_date'], form_data['end_date'], form_data['capacity'], program_id)
+                )
             
-            return redirect(reverse('hrapp:training'))
+        return redirect(reverse('hrapp:training'))
             

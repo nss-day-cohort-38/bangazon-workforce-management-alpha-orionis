@@ -1,12 +1,22 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
-    <h1> {{program.title}}</h1>
-    <h2>Start Date: {{program.start_date}}</h2>
-    <h2>End Date: {{program.end_date}}</h2>
-    <h2>Capacity: {{program.capacity}}</h2>
-    <h1>Employees:</h1>
+<h1> {{program.title}}</h1>
+
+<form action="{% url 'hrapp:training_edit_form' program.id %}" method="GET">
+    {% csrf_token %}
+    <button>Edit</button>
+</form>
+
+<h2>Start Date: {{program.start_date}}</h2>
+<h2>End Date: {{program.end_date}}</h2>
+<h2>Capacity: {{program.capacity}}</h2>
+<h1>Employees:</h1>
+<ol>
 {% for employee in program.employees_names %}
-    <h2>{{employee}}</h2>
+    <li>
+        <h2>{{employee}}</h2>
+    </li>
     {% endfor %}
+</ol>
 {% endblock content %}

@@ -1,13 +1,17 @@
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>HrApp</title>
-    </head>
+  
+{% extends 'shared/base.html' %} 
+
+{% block content %}
 
     <body>
         <h1>Create Training Program</h1>
+        {% if program.id is not None %}
+        <form action="{% url 'hrapp:training_detail' program.id %}" method="post">
+            <!-- <input type="hidden" name="actual_method" value="PUT"> -->
+        {% else %}
 
         <form action="{% url 'hrapp:training' %}" method="post">
+        {% endif %}
             {% csrf_token %}
             <fieldset>
                 <label for="title">Title: </label>
@@ -28,9 +32,14 @@
                 <label for="capacity">Capacity: </label>
                 <input type="number" id="capacity" name="capacity" value="{{program.capacity}}">
             </fieldset>
-
-            <input type="submit" value="Submit" />
+            {% if program.id is not None %}
+            <input type="hidden" name="actual_method" value="PUT"/>
+            <input type="submit" value="Update" />
+            {% else %}
+            <input type="submit" value="Create"/>
+            {% endif %}
 
         </form>
-    </body>
-</html>
+
+        {% endblock %}
+   
