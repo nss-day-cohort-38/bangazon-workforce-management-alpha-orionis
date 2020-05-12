@@ -32,6 +32,8 @@ def create_computer(cursor, row):
     computer.purchase_date = _row['purchase_date']
     computer.manufacturer = _row['manufacturer']
 
+    return computer
+
 def computer_details(request, computer_id):
     if request.method == 'GET':
         computer = get_computer(computer_id)

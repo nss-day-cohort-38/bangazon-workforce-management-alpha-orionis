@@ -11,4 +11,4 @@ from .trainingprograms.form import training_edit_form
 from .trainingprograms.details import program_details
 from .computers.list import computer_list
 from .computers.form import computer_form
-# from .computers.details import computer_details
+from .computers.details import computer_details
