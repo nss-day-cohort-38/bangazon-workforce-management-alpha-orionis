@@ -2,6 +2,10 @@
 
 {% block content %}
     <h1> {{program.title}}</h1>
+    <h2>Start Date: {{program.start_date}}</h2>
+    <h2>End Date: {{program.end_date}}</h2>
+    <h2>Capacity: {{program.capacity}}</h2>
+    <h1>Employees:</h1>
 {% for employee in program.employees_names %}
     <h2>{{employee}}</h2>
     {% endfor %}
