@@ -6,4 +6,12 @@
     <h2>Model: {{ computer.manufacturer }}</h2>
     <h3>Purchase Date: {{ computer.purchase_date }}</h3>
 <section>
+
+<section>
+    <form action="{% url 'hrapp:computer_details' computer.id %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="actual_method" value="DELETE" />
+        <button>Delete</button>
+    </form>
+</section>
 {% endblock %}
