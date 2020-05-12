@@ -2,4 +2,7 @@
 
 {% block content %}
     <h1> {{program.title}}</h1>
+{% for employee in program.employees_names %}
+    <h2>{{employee}}</h2>
+    {% endfor %}
 {% endblock content %}
