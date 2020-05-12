@@ -2,13 +2,18 @@
 
 {% block content %}
 <h1>Training Programs</h1>
+<form action="{% url 'hrapp:training_form' %}" method='GET'>
+    <button>Create New Program</button>
+</form>
 
 <ol>
-{% for program in programs %}
+    {% for program in programs %}
     <li>
-        <p>{{ program.title }}</p>
+        <p>
+            <a href="{% url 'hrapp:training_detail' program.id %}"> {{ program.title }} </a>
+        </p>
         Starting Date: {{program.start_date}}
     </li>
-{% endfor %}
+    {% endfor %}
 </ol>
 {% endblock content %}
