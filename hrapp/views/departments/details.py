@@ -6,7 +6,7 @@ from hrapp.models import Employee
 # from hrapp.models import model_factory
 from ..connection import Connection
 
-def get_department(department_id):
+def get_department(request, department_id):
     with sqlite3.connect(Connection.db_path) as conn:
         conn.row_factory = create_department
         db_cursor = conn.cursor()
@@ -25,12 +25,24 @@ def get_department(department_id):
             WHERE d.id = ?
             """, (department_id,))
 
-        return db_cursor.fetchall()
+        departments = db_cursor.fetchall()
+        department_groups = {}
+        department_groups_values = department_groups.values()
+
+        for (department, employee) in departments:
+            if department.id not in department_groups:
+                department_groups[department.id] = department
+                department_groups[department.id].employees.append(employee)
+
+            else: 
+                department_groups[department.id].employees.append(employee)
 
     template = 'departments/details.html'
     context = {
-        'all_departments': departments
+        'department_groups_values': department_groups_values
     }
+
+    return render(request, template, context)
 
 def create_department(cursor, row):
     _row = sqlite3.Row(cursor, row)
@@ -39,6 +51,8 @@ def create_department(cursor, row):
     department.id = _row["id"]
     department.name = _row["department_name"]
     department.budget = _row["budget"]
+
+    department.employees = []
 
     employee = Employee()
     employee.id = _row["id"]
