@@ -8,20 +8,23 @@
   <body>
     <h1>Add Employee</h1>
 
-
-    <form action="{% url 'hrapp:employee_list' %}" method="post">
+    {% if employee.id is not None %}
+        <form action="{% url 'hrapp:employee' employee.id %}" method="post">
+    {% else %}
+        <form action="{% url 'hrapp:employee_list' %}" method="post">
+    {% endif %}
       {% csrf_token %}
       <fieldset>
           <label for="first_name">First Name: </label>
-          <input id="first_name" type="text" name="first_name">
+          <input id="first_name" type="text" name="first_name" value="{{ employee.first_name }}">
       </fieldset>
       <fieldset>
           <label for="last_name">Last Name: </label>
-          <input id="last_name" type="text" name="last_name">
+          <input id="last_name" type="text" name="last_name" value="{{ employee.last_name }}">
       </fieldset>
       <fieldset>
           <label for="start_date">Start Date: </label>
-          <input id="start_date" type="date" name="start_date">
+          <input id="start_date" type="date" name="start_date" value="{{ employee.start_date }}">
       </fieldset>
       <fieldset>
           <label for="department">Department: </label>
@@ -32,7 +35,14 @@
           </select>
       </fieldset>
 
-      <input type="submit" value="Add It" />
+      {% if employee.id is not None %}
+          <input type="hidden" name="actual_method" value="PUT">
+          <input type="submit" value="Update">
+      {% else %}
+          <input type="submit" value="Create">
+      {% endif %}
+
+      <!-- <input type="submit" value="Add It" /> -->
     </form>
   </body>
 </html>
