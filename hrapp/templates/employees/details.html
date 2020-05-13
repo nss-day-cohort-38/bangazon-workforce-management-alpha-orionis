@@ -9,12 +9,12 @@
     {% for program in employee_programs %}
     <li>{{program.title}}</li>
     {% empty %}
-    No Programs
+    {{employee.first_name}} is not assigned any training programs.
     {% endfor %}
 </ul>
 </p>
 
-<p>Assigned Computer: {{ employee_computers.computer }} {% if not employee_computers %}No Computer Assigned{% endif %}</p>
+<p>Assigned Computer: {{ employee_computer.computer }} {% if not employee_computer %}No Computer Assigned{% endif %}</p>
 
 
 {% endblock content %}
