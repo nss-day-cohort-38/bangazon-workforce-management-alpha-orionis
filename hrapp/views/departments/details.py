@@ -25,7 +25,12 @@ def get_department(department_id):
             WHERE d.id = ?
             """, (department_id,))
 
-        return db_cursor.fetchone()
+        return db_cursor.fetchall()
+
+    template = 'departments/details.html'
+    context = {
+        'all_departments': departments
+    }
 
 def create_department(cursor, row):
     _row = sqlite3.Row(cursor, row)
