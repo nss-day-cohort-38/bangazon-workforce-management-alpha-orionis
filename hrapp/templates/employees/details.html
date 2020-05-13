@@ -1,1 +1,20 @@
+{% block content %}
+<h2>{{ employee.first_name }} {{ employee.last_name }}</h2>
 
+<p>Department: {{ employee.department.department_name}}</p>
+
+<p>Training Programs:
+
+<ul>
+    {% for program in employee_programs %}
+    <li>{{program.title}}</li>
+    {% empty %}
+    {{employee.first_name}} is not assigned any training programs.
+    {% endfor %}
+</ul>
+</p>
+
+<p>Assigned Computer: {{ employee_computer.computer }} {% if not employee_computer %}No Computer Assigned{% endif %}</p>
+
+
+{% endblock content %}

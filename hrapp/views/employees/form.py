@@ -5,7 +5,7 @@ from hrapp.models import Employee
 from hrapp.models import Department
 from hrapp.models import model_factory
 from ..connection import Connection
-# from .details import get_employee
+from .db_manager.get_employee import get_employee
 
 
 def get_departments():
@@ -37,12 +37,12 @@ def employee_form(request):
 @login_required
 def employee_edit_form(request, employee_id):
     if request.method == 'GET':
-        # employee = get_employee(employee_id)
+        employee = get_employee(employee_id)
         departments = get_departments()
 
         template = 'employees/form.html'
         context = {
-            # 'employee': employee,
+            'employee': employee,
             'all_departments': departments
         }
 
