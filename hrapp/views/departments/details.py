@@ -7,7 +7,7 @@ from ..connection import Connection
 
 def get_department(department_id):
     with sqlite3.connect(Connection.db_path) as conn:
-        conn.row_factory = create_department
+        conn.row_factory = create_employee
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
@@ -17,49 +17,36 @@ def get_department(department_id):
                 d.budget,
                 e.first_name,
                 e.last_name,
-                e.id
+                e.id AS e_id
             FROM hrapp_department d
             LEFT JOIN hrapp_employee e
             ON e.department_id = d.id
             WHERE d.id = ?
             """, (department_id,))
 
-        departments = db_cursor.fetchall()
-        department_groups = {}
-        department_groups_values = department_groups.values()
+        department_employees = db_cursor.fetchall()
+        department = Department()
+        department.employees = []
+        department.name = department_employees[0]["department_name"]
 
-        for (department, employee) in departments:
-            if department.id not in department_groups:
-                department_groups[department.id] = department
-                department_groups[department.id].employees.append(employee)
-
-            else: 
-                department_groups[department.id].employees.append(employee)
-
-    template = 'departments/details.html'
-    context = {
-        'department_groups_values': department_groups_values
-    }
-
-    return render(template, context)
-
-def create_department(cursor, row):
-    _row = sqlite3.Row(cursor, row)
-
-    department = Department()
-    department.id = _row["id"]
-    department.name = _row["department_name"]
-    department.budget = _row["budget"]
-
-    department.employees = []
-
-    employee = Employee()
-    employee.id = _row["id"]
-    employee.first_name = _row["first_name"]
-    employee.last_name = _row["last_name"]
+        for employee in department_employees:
+            department.employees.append(employee["employee"])
 
     return department
 
+def create_employee(cursor, row):
+    _row = sqlite3.Row(cursor, row)
+
+    department_employee = {}
+    employee = Employee()
+    employee.id = _row["e_id"]
+    employee.first_name = _row["first_name"]
+    employee.last_name = _row["last_name"]
+    department_employee["employee"] = employee
+    department_employee["department_name"] = _row["department_name"]
+
+
+    return department_employee
 
 @login_required
 def department_details(request, department_id):

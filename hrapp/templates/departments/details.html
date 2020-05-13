@@ -11,16 +11,14 @@
         <title>Departments</title>
     </head>
     <section>
-    {% for department in department_groups_values %}
     
         <h1>{{ department.name }}</h1>
 
         <ul>
             {% for employee in department.employees %}    
-            <li>  {{department.employees.first_name}} {{department.employees.last_name}}</li>
+            <li>  {{ employee.first_name }} {{ employee.last_name }}</li>
             {% endfor %}
-        </ul>
-    {% endfor %} 
+        </ul> 
     </section>
 </html>
 
