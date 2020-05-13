@@ -6,8 +6,12 @@
     <title>Add Employees</title>
   </head>
   <body>
-    <h1>Add Employee</h1>
-
+    {% if employee.id is not None %}
+        <h1>Update Employee</h1>
+    {% else %}
+        <h1>Add Employee</h1>
+    {% endif %}
+    
     {% if employee.id is not None %}
         <form action="{% url 'hrapp:employee' employee.id %}" method="post">
     {% else %}
@@ -28,9 +32,13 @@
       </fieldset>
       <fieldset>
           <label for="department">Department: </label>
-          <select id="department" type="text" name="department_id">
+          <select id="department" type="text" name="department_id" value="{{ employee.department.department_name }}">
                 {% for department in all_departments %}
-                    <option value="{{ department.id }}">{{ department.department_name }}</option>
+                    {% if employee.department_id == department.id %}
+                        <option value="{{ department.id }}" selected>{{ department.department_name }}</option>
+                    {% else %}
+                    <option value="{{ department.id }}" >{{ department.department_name }}</option>
+                    {% endif %}
                 {% endfor %}
           </select>
       </fieldset>
