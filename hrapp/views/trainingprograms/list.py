@@ -59,3 +59,42 @@ def training_program_list(request):
             )
         return redirect(reverse('hrapp:training'))
 
+def training_program_past(request):
+    if request.method == 'GET':
+        with sqlite3.connect(Connection.db_path) as conn:
+            conn.row_factory = sqlite3.Row
+            db_cursor = conn.cursor()
+
+            
+            db_cursor.execute("""
+            SELECT
+                etp.id,
+                etp.title,
+                etp.start_date,
+                etp.end_date,
+                etp.capacity
+            FROM hrapp_trainingprogram etp
+            WHERE etp.start_date <= DATE()
+            """)
+
+            all_programs = []
+            dataset = db_cursor.fetchall()
+
+            for row in dataset:
+                program = TrainingProgram()
+                program.id = row['id']
+                program.title = row['title']
+                program.start_date = row['start_date']
+                program.end_date = row['end_date']
+                program.capacity = row['start_date']
+
+                
+                all_programs.append(program)
+
+        template = 'trainingprograms/list.html'
+        context = {
+            'programs': all_programs
+        }
+
+        return render(request, template, context)
+
