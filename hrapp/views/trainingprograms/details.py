@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from hrapp.models import TrainingProgram, Employee
 from hrapp.models import model_factory
 from ..connection import Connection
+from datetime import datetime
 
 def get_program(program_id):
     with sqlite3.connect(Connection.db_path) as conn:
@@ -42,6 +43,11 @@ def get_program(program_id):
                 tprogram.start_date = tuples[2]
                 tprogram.end_date = tuples[3]
                 tprogram.capacity = tuples[4]
+
+                if datetime.strptime(tprogram.start_date, "%Y-%m-%d") > datetime.now():
+                    tprogram.past = True
+                else:
+                    tprogram.past = False
 
                 employee = Employee()
                 employee.id = tuples[7]

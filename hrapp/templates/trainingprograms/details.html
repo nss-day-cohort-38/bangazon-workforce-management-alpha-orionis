@@ -15,10 +15,11 @@
 </form>
 
 
-
+{% if program.past %}
 <h2>Start Date: {{program.start_date}}</h2>
 <h2>End Date: {{program.end_date}}</h2>
 <h2>Capacity: {{program.capacity}}</h2>
+{% endif %}
 <h1>Employees:</h1>
 <ol>
 {% for employee in program.employees_names %}
