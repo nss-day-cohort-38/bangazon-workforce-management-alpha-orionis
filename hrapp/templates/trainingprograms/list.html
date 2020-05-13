@@ -19,5 +19,7 @@
 
 {% if not past %}
 <a href="{% url 'hrapp:training_past' %}"><button>See Past Programs</button></a>
+{% else %}
+<a href="{% url 'hrapp:training' %}"><button>See Future Programs</button></a>
 {% endif %}
 {% endblock content %}
