@@ -12,18 +12,18 @@ def get_department(department_id):
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
-        SELECT
-        d.id,
-        d.department_name,
-        d.budget,
-        e.first_name,
-        e.last_name,
-        e.id	
-        FROM hrapp_department d
-        LEFT JOIN hrapp_employee e
-        ON e.department_id = d.id
-        WHERE d.id = ?
-        """, (department_id,))
+            SELECT
+                d.id,
+                d.department_name,
+                d.budget,
+                e.first_name,
+                e.last_name,
+                e.id
+            FROM hrapp_department d
+            LEFT JOIN hrapp_employee e
+            ON e.department_id = d.id
+            WHERE d.id = ?
+            """, (department_id,))
 
         return db_cursor.fetchone()
 
@@ -39,8 +39,6 @@ def create_department(cursor, row):
     employee.id = _row["id"]
     employee.first_name = _row["first_name"]
     employee.last_name = _row["last_name"]
-    # employee.start_date = _row["start_date"]
-    # employee.is_supervisor = _row["is_supervisor"]
 
     department.employee = employee
 
