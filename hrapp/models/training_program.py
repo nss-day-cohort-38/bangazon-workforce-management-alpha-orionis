@@ -7,7 +7,7 @@ class TrainingProgram(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     capacity = models.IntegerField()
-    employees = models.ManyToManyField('Employee', through='EmployeeTrainingProgram')
+    # employees = models.ManyToManyField('Employee', through='EmployeeTrainingProgram')
 
     class Meta:
         verbose_name = ("Training Program")
