@@ -10,10 +10,20 @@
     {% for program in programs %}
     <li>
         <p>
+            {% if not past %}
             <a href="{% url 'hrapp:training_detail' program.id %}"> {{ program.title }} </a>
+            {% else %}
+            <a href="{% url 'hrapp:past_detail' program.id %}"> {{ program.title }} </a>
+            {% endif %}
         </p>
         Starting Date: {{program.start_date}}
     </li>
     {% endfor %}
 </ol>
+
+{% if not past %}
+<a href="{% url 'hrapp:training_past' %}"><button>See Past Programs</button></a>
+{% else %}
+<a href="{% url 'hrapp:training' %}"><button>See Future Programs</button></a>
+{% endif %}
 {% endblock content %}
