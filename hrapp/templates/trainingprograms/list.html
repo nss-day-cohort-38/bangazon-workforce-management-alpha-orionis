@@ -17,5 +17,7 @@
     {% endfor %}
 </ol>
 
+{% if not past %}
 <a href="{% url 'hrapp:training_past' %}"><button>See Past Programs</button></a>
+{% endif %}
 {% endblock content %}

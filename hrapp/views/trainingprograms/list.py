@@ -93,7 +93,8 @@ def training_program_past(request):
 
         template = 'trainingprograms/list.html'
         context = {
-            'programs': all_programs
+            'programs': all_programs,
+            'past': True
         }
 
         return render(request, template, context)
