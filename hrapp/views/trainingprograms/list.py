@@ -74,7 +74,7 @@ def training_program_past(request):
                 etp.end_date,
                 etp.capacity
             FROM hrapp_trainingprogram etp
-            WHERE etp.start_date <= DATE()
+            WHERE etp.start_date < DATE()
             """)
 
             all_programs = []
