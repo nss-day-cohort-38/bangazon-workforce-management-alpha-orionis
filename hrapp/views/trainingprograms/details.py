@@ -83,6 +83,11 @@ def program_details(request, program_id):
                 DELETE FROM hrapp_trainingprogram
                 WHERE id = ?
                 """, (program_id,))
+                
+                db_cursor.execute("""
+                DELETE FROM hrapp_employeetrainingprogram 
+                WHERE training_program_id = ?
+                """, (program_id,))
 
             return redirect(reverse('hrapp:training'))
         
