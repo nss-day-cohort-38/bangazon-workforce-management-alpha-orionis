@@ -49,7 +49,7 @@ def employee_list(request):
             VALUES (?, ?, ?, ?, ?)
             """,
             (form_data['first_name'], form_data['last_name'],
-                form_data['start_date'],0, form_data['department_id'],
+                form_data['start_date'], form_data['department_id'],
                 ))
 
         return redirect(reverse('hrapp:employee_list'))
