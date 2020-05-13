@@ -8,6 +8,14 @@
     <button>Edit</button>
 </form>
 
+<form action="{% url 'hrapp:training_detail' program.id %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="actual_method" value="DELETE"/>
+    <button>Delete</button>
+</form>
+
+
+
 <h2>Start Date: {{program.start_date}}</h2>
 <h2>End Date: {{program.end_date}}</h2>
 <h2>Capacity: {{program.capacity}}</h2>

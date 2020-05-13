@@ -82,7 +82,9 @@ def program_details(request, program_id):
                 db_cursor.execute("""
                 DELETE FROM hrapp_trainingprogram
                 WHERE id = ?
-                """, (program_id))
+                """, (program_id,))
+
+            return redirect(reverse('hrapp:training'))
         
         if ("actual_method" in form_data
             and form_data["actual_method"] == "PUT"
@@ -101,5 +103,5 @@ def program_details(request, program_id):
                 (form_data['title'], form_data['start_date'], form_data['end_date'], form_data['capacity'], program_id)
                 )
             
-        return redirect(reverse('hrapp:training'))
+            return redirect(reverse('hrapp:training'))
             
