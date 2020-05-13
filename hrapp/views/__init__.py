@@ -1,5 +1,6 @@
 from .employees.list import employee_list
 from .employees.form import employee_form
+from .employees.details import employee_details
 from .departments.list import department_list
 from .departments.details import department_details
 from .departments.form import department_form
