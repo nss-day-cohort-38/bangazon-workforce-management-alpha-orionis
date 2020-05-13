@@ -3,10 +3,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from hrapp.models import Department
 from hrapp.models import Employee
-# from hrapp.models import model_factory
 from ..connection import Connection
 
-def get_department(request, department_id):
+def get_department(department_id):
     with sqlite3.connect(Connection.db_path) as conn:
         conn.row_factory = create_department
         db_cursor = conn.cursor()
@@ -42,7 +41,7 @@ def get_department(request, department_id):
         'department_groups_values': department_groups_values
     }
 
-    return render(request, template, context)
+    return render(template, context)
 
 def create_department(cursor, row):
     _row = sqlite3.Row(cursor, row)
@@ -58,8 +57,6 @@ def create_department(cursor, row):
     employee.id = _row["id"]
     employee.first_name = _row["first_name"]
     employee.last_name = _row["last_name"]
-
-    department.employee = employee
 
     return department
 

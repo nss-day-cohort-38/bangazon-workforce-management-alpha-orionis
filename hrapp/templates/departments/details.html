@@ -13,9 +13,14 @@
     <section>
     {% for department in department_groups_values %}
     
-        <h1>{{ department.department_name }}</h1>
-        <h2>Budget: {{ department.budget }}</h2>
-        <h4>Employees:  {{department.employee.first_name}} {{department.employee.last_name}}</h4>
+        <h1>{{ department.name }}</h1>
+
+        <ul>
+            {% for employee in department.employees %}    
+            <li>  {{department.employees.first_name}} {{department.employees.last_name}}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %} 
     </section>
 </html>
 
