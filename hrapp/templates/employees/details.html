@@ -15,6 +15,9 @@
 </p>
 
 <p>Assigned Computer: {{ employee_computer.computer }} {% if not employee_computer %}No Computer Assigned{% endif %}</p>
-
+<form action="{% url 'hrapp:employee_edit_form' employee.id %}" method="GET">
+    {% csrf_token %}
+    <button>Edit</button>
+</form>
 
 {% endblock content %}
