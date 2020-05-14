@@ -4,13 +4,15 @@
 {% block content %}
 <div class="page-header">Training Programs</div>
 <section class="list-container">
+    {% if user.is_authenticated %}
 <form action="{% url 'hrapp:training_form' %}" method='GET'>
     <button class="bang-button color1 border-radius-top">create</button>
 </form>
+    {%endif%}
 <div class="list-box">
 
     {% for program in programs %}
-  
+        {% if user.is_authenticated %}
         <p class="list-row">
             {% if not past %}
             <a class="list-title" href="{% url 'hrapp:training_detail' program.id %}"> {{ program.title }} </a>
@@ -19,6 +21,16 @@
             {% endif %}
         <a class="list-detail">{{program.start_date}}</a>
         </p>
+            {%else%}
+        <p class="list-row">
+            {% if not past %}
+            <p> {{ program.title }} </p>
+            {% else %}
+            <p> {{ program.title }} </p>
+            {% endif %}
+        <a class="list-detail">{{program.start_date}}</a>
+        </p>
+        {%endif%}
  
     {% endfor %}
 
