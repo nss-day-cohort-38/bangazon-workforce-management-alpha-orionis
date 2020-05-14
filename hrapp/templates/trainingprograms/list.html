@@ -6,7 +6,7 @@
 <section class="list-container">
     {% if user.is_authenticated %}
 <form action="{% url 'hrapp:training_form' %}" method='GET'>
-    <button class="bang-button color1 border-radius-top">create</button>
+    <button class="bang-button color3 border-radius-top">create</button>
 </form>
     {%endif%}
 <div class="list-box">
@@ -37,9 +37,9 @@
 
 </div>
 {% if not past %}
-<a href="{% url 'hrapp:training_past' %}"><button class="bang-button color2 border-radius-bottom">past</button></a>
+<a href="{% url 'hrapp:training_past' %}"><button class="bang-button color1 border-radius-bottom">past</button></a>
 {% else %}
-<a href="{% url 'hrapp:training' %}"><button class="bang-button color2 border-radius-bottom">future</button></a>
+<a href="{% url 'hrapp:training' %}"><button class="bang-button color1 border-radius-bottom">future</button></a>
         </section>
 {% endif %}
 {% endblock content %}

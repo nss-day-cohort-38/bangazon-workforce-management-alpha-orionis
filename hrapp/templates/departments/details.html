@@ -8,17 +8,19 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Departments</title>
+        <div class="page-header">Departments</div>
     </head>
-    <section>
     
-        <h1>{{ department.name }}</h1>
+    <section class="list-container">
+    <div class="list-box">
+        <div class="list-title">{{ department.name }}</div>
 
         <ul>
             {% for employee in department.employees %}    
             <li>  {{ employee.first_name }} {{ employee.last_name }}</li>
             {% endfor %}
         </ul> 
+        </div>
     </section>
 </html>
 

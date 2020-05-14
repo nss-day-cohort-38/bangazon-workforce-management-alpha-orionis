@@ -1,17 +1,19 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
-<section>
-    <h1>Make: {{ computer.make }}</h1>
-    <h2>Model: {{ computer.manufacturer }}</h2>
-    <h3>Purchase Date: {{ computer.purchase_date }}</h3>
-<section>
+<section class="list-container">
+<div class="list-box">
+    <div><a class="list-info">Make:</a><a class="list-title"> {{ computer.make }}</a></div>
+    <div><a class="list-info">Model: </a><a class="list-title">{{ computer.manufacturer }}</a></div>
+    <div><a class="list-info">Purchase Date: </a><a class="list-title">{{ computer.purchase_date }}</a></div>
 
 <section>
+    </div>
     <form action="{% url 'hrapp:computer_details' computer.id %}" method="POST">
         {% csrf_token %}
         <input type="hidden" name="actual_method" value="DELETE" />
-        <button onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+        <button class="bang-button color4 border-radius-bottom" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
     </form>
+</section>
 </section>
 {% endblock %}

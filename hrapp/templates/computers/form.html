@@ -1,7 +1,9 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
-    <h1>Add New Computer</h1>
+    <div class="page-header">Add New Computer</div>
+    <section class="list-container">
+    <div class="list-box">
 
     <form action="{% url 'hrapp:computer_list' %}" method="POST">
         {% csrf_token %}
@@ -32,6 +34,8 @@
             <input type="date" name="date" />
         </fieldset>
 
-        <input type="submit" value="Create" />
+        </div>
+        <input class="bang-button color3 border-radius-bottom" type="submit" value="Create" />
+    </section>
     </form>
 {% endblock content %}

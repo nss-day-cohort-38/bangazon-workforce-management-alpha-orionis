@@ -1,6 +1,6 @@
 :root {
   --color1: #3b8cf0;
-  --color2: rgb(77, 235, 247) ;
+  --color2: rgb(77, 235, 247);
 }
 
 .color1 {
@@ -10,6 +10,14 @@
 
 .color2 {
   background-color: var(--color2);
+}
+
+.color3 {
+  background-color: greenyellow;
+}
+
+.color4 {
+  background-color: rgba(255, 156, 70, 0.701);
 }
 
 body {
@@ -99,8 +107,30 @@ body {
   color: rgb(99, 97, 97);
 }
 
+.list-info {
+  font-weight: lighter;
+}
+
 
 .list-container {
   margin: 10px 0px 20px 50px;
   max-width: 80%;
+}
+
+fieldset {
+  border: none;
+}
+
+label {
+  font-size: small;
+  font-weight: lighter;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.margin-top {
+  margin-top: 10px;
+}
+
+.indent {
+  margin-left: 10px;
 }

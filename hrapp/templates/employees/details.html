@@ -1,7 +1,9 @@
 {% extends 'shared/base.html' %}
 {% block content %}
-<h2>{{ employee.first_name }} {{ employee.last_name }}</h2>
+<div class="page-header">{{ employee.first_name }} {{ employee.last_name }}</div>
 
+<section class="list-container">
+<div class="list-box">
 <p>Department: {{ employee.department.department_name}}</p>
 
 <p>Training Programs:
@@ -18,7 +20,10 @@
 <p>Assigned Computer: {{ employee_computer.computer }} {% if not employee_computer %}No Computer Assigned{% endif %}</p>
 <form action="{% url 'hrapp:employee_edit_form' employee.id %}" method="GET">
     {% csrf_token %}
-    <button>Edit</button>
+</div>
+    <button class="bang-button color2 border-radius-bottom">Edit</button>
 </form>
+</section>
+
 
 {% endblock content %}
