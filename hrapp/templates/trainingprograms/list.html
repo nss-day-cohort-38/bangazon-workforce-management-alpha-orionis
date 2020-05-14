@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block content %}
+<div class="page-header">Training Programs</div>
+<section class="list-container">
 <form action="{% url 'hrapp:training_form' %}" method='GET'>
-    <div class="page-header">Training Programs</div>
-    <section class="list-container">
     <button class="bang-button color1 border-radius-top">create</button>
 </form>
 <div class="list-box">
