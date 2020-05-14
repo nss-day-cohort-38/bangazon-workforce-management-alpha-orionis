@@ -1,15 +1,17 @@
 {% extends 'shared/base.html' %}
-
 {% block content %}
-<h1>Employees</h1>
+<div class="page-header">Employees</div>
 
-<ol>
+
+<section class="list-container">
+<div class="list-box">
 {% for employee in employees %}
-    <li>
-        <a href="{% url 'hrapp:employee' employee.employee_id %}"><p>{{ employee }}</p></a>
-        Department: {{employee.department.department_name}}
-    </li>
+    <p class="list-row">
+        <a class="list-title" href="{% url 'hrapp:employee' employee.employee_id %}">{{ employee }}</a>
+        <a class="list-detail">Department: {{employee.department.department_name}}</a>
+    </p>
 {% endfor %}
-</ol>
-<button onclick="window.location.href='/employee/form'">Add Employee</button>
+</div>
+<button class="bang-button color2 border-radius-bottom" onclick="window.location.href='/employee/form'">Add</button>
+</section>
 {% endblock content %}
