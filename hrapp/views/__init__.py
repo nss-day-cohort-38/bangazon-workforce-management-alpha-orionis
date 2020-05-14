@@ -15,3 +15,4 @@ from .computers.list import computer_list
 from .computers.list import computer_list
 from .computers.form import computer_form
 from .computers.details import computer_details
+from .computers.search_results import search_results
