@@ -10,7 +10,9 @@
     <li>
         {% if user.is_authenticated %}
         Name:   <a href="{% url 'hrapp:department' department.id %}">{{ department.department_name }}</a>
-        
+        {%else%}
+        Name:  {{ department.department_name }}
+        {%endif%}
         </br>
         Budget: ${{department.budget}}
     </li>
