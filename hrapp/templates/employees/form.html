@@ -1,6 +1,7 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+
   <head>
     <meta charset="utf-8">
     <title>Add Employees</title>
@@ -53,4 +54,4 @@
       <!-- <input type="submit" value="Add It" /> -->
     </form>
   </body>
-</html>
+{% endblock content %}

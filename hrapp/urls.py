@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from django.conf.urls import include
 from hrapp import views
 from .views import *
@@ -6,7 +6,7 @@ from .views import *
 app_name = 'hrapp'
 urlpatterns = [
     path('', home, name='home'),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls'), name='login'),
     path('logout/', logout_user, name='logout'),
     path('employees/', employee_list, name='employee_list'),
     path('employee/<int:employee_id>', employee_details, name='employee'),

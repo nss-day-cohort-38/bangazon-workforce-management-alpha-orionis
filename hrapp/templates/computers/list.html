@@ -6,16 +6,19 @@
 <div class="list-box">
 
 {% for computer in all_computers %}
-    
+        {% if user.is_authenticated %}
         <a href="{% url 'hrapp:computer_details' computer.id %}">
             <p class="list-title">{{ computer.make }}</p>
         </a>
- 
+        {%else%}
+            <p>{{ computer.make }}</p>
+        {%endif%}
 {% endfor %}
 </div>
 
-
+{% if user.is_authenticated %}
 <a href="{% url 'hrapp:computer_form' %}"><button class="bang-button color2 border-radius-bottom">Add</button></a>
 {% comment %} <button onclick="window.location.href='/departments/form'">Add Computer</button> {% endcomment %}
+{%endif%}
 {% endblock content %}
 </section>
