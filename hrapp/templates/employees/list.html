@@ -7,11 +7,17 @@
 <div class="list-box">
 {% for employee in employees %}
     <p class="list-row">
+        {% if user.is_authenticated %}
         <a class="list-title" href="{% url 'hrapp:employee' employee.employee_id %}">{{ employee }}</a>
+        {%else%}
+        <a>{{ employee }}</a>
+        {%endif%}
         <a class="list-detail">Department: {{employee.department.department_name}}</a>
     </p>
 {% endfor %}
 </div>
+{% if user.is_authenticated %}
 <button class="bang-button color2 border-radius-bottom" onclick="window.location.href='/employee/form'">Add</button>
+{%endif%}
 </section>
 {% endblock content %}
