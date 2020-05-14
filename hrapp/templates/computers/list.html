@@ -19,9 +19,10 @@
         {%else%}
             <p>{{ computer.make }}</p>
         {%endif%}
-        <p>{{ computer.employee.first_name }} {{ computer.employee.last_name }}</p>
-    </li>
-        
+        {% if computer.employee.first_name is not None %}
+            <p>{{ computer.employee.first_name }} {{ computer.employee.last_name }}</p>
+        {% endif %}
+    </li>    
 {% endfor %}
 </div>
 
