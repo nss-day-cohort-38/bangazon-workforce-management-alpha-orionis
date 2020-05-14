@@ -16,6 +16,10 @@
   background-color: greenyellow;
 }
 
+.color4 {
+  background-color: rgba(255, 156, 70, 0.701);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -103,6 +107,10 @@ body {
   color: rgb(99, 97, 97);
 }
 
+.list-info {
+  font-weight: lighter;
+}
+
 
 .list-container {
   margin: 10px 0px 20px 50px;
@@ -117,4 +125,8 @@ label {
   font-size: small;
   font-weight: lighter;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.margin-top {
+  margin-top: 10px;
 }

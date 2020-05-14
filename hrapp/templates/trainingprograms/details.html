@@ -2,31 +2,35 @@
 {% load static %}
 
 {% block content %}
-<h1> {{program.title}}</h1>
+<div class="page-header"> {{program.title}}</div>
 
+<section class="list-container">
 <form action="{% url 'hrapp:training_edit_form' program.id %}" method="GET">
     {% csrf_token %}
-    <button>Edit</button>
+    <button class="bang-button color3 border-radius-top">Edit</button>
+<div class="list-box">
 </form>
 
-<form action="{% url 'hrapp:training_detail' program.id %}" method="POST">
-    {% csrf_token %}
-    <input type="hidden" name="actual_method" value="DELETE"/>
-    <button>Delete</button>
-</form>
 
 
 {% if program.past %}
-<h2>Start Date: {{program.start_date}}</h2>
-<h2>End Date: {{program.end_date}}</h2>
-<h2>Capacity: {{program.capacity}}</h2>
+<div><a class="list-info"> Start Date:</a> <a class="list-title">{{program.start_date}}</a></div>
+<div><a class="list-info">End Date: </a> <a class="list-title">{{program.end_date}}</a></div>
+<div><a class="list-info">Capacity: </a> <a class="list-title">{{program.capacity}}</a></div>
 {% endif %}
-<h1>Employees:</h1>
+<div class="margin-top list-info">Trainees:</div>
 <ol>
 {% for employee in program.employees_names %}
-    <li>
-        <h2>{{employee}}</h2>
+    <li class="list-detail">
+        <div class="list-title">{{employee}}</div>
     </li>
     {% endfor %}
 </ol>
+</div>
+<form action="{% url 'hrapp:training_detail' program.id %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="actual_method" value="DELETE"/>
+    <button class="bang-button color4 border-radius-bottom">Delete</button>
+</form>
+</section>
 {% endblock content %}
