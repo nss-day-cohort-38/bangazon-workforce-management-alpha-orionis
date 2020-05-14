@@ -130,3 +130,7 @@ label {
 .margin-top {
   margin-top: 10px;
 }
+
+.indent {
+  margin-left: 10px;
+}
