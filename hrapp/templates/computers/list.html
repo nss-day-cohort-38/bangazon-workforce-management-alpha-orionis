@@ -5,6 +5,12 @@
 <section class="list-container">
 <div class="list-box">
 
+<form action="{% url 'hrapp:search_results' %}" method="POST">
+{% csrf_token %}
+<input type="search" name="search_term" for="search_bar"/>
+
+</form>
+
 {% for computer in all_computers %}
     
         <a href="{% url 'hrapp:computer_details' computer.id %}">
