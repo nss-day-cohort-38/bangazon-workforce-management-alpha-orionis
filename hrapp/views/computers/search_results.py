@@ -26,7 +26,7 @@ def search_results(request):
             ON c.id = ec.computer_id
             LEFT JOIN hrapp_employee e 
             ON ec.employee_id = e.id
-            WHERE c.make = ? OR c.manufacturer = ?
+            WHERE c.make like ? OR c.manufacturer like ?
             """, (form_data['search_term'], form_data['search_term'],))
 
             all_computers = []
