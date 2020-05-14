@@ -20,3 +20,10 @@ body {
 .navList__route {
   margin: 0 0.5em;
 }
+
+.list_content {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

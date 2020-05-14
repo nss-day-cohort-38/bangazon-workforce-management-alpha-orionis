@@ -1,9 +1,10 @@
 {% extends 'shared/base.html' %}
+{% load static %}
 
 {% block content %}
 <h1>Employees</h1>
 
-<ol>
+<ol class="list_content">
 {% for employee in employees %}
     <li>
         <a href="{% url 'hrapp:employee' employee.employee_id %}"><p>{{ employee }}</p></a>
