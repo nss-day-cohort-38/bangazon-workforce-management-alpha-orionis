@@ -2,15 +2,12 @@
 {% load static %}
 {% block content %}
 
-  <head>
-    <meta charset="utf-8">
-    <title>Add Employees</title>
-  </head>
+  
   <body>
     {% if employee.id is not None %}
-        <h1>Update Employee</h1>
+        <div class="page-header">Update Employee</div>
     {% else %}
-        <h1>Add Employee</h1>
+        <div class="page-header">Add Employee</div>
     {% endif %}
     
     {% if employee.id is not None %}
@@ -19,6 +16,8 @@
         <form action="{% url 'hrapp:employee_list' %}" method="post">
     {% endif %}
       {% csrf_token %}
+      <section class="list-container">
+      <div class="list-box">
       <fieldset>
           <label for="first_name">First Name: </label>
           <input id="first_name" type="text" name="first_name" value="{{ employee.first_name }}">
@@ -43,14 +42,14 @@
                 {% endfor %}
           </select>
       </fieldset>
-
+</div>
       {% if employee.id is not None %}
           <input type="hidden" name="actual_method" value="PUT">
-          <input type="submit" value="Update">
+          <input class="bang-button color3 border-radius-bottom" type="submit" value="Update">
       {% else %}
-          <input type="submit" value="Create">
+          <input class="bang-button color3 border-radius-bottom" type="submit" value="Create">
       {% endif %}
-
+</section>
       <!-- <input type="submit" value="Add It" /> -->
     </form>
   </body>

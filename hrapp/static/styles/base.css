@@ -1,6 +1,6 @@
 :root {
   --color1: #3b8cf0;
-  --color2: rgb(77, 235, 247) ;
+  --color2: rgb(77, 235, 247);
 }
 
 .color1 {
@@ -10,6 +10,10 @@
 
 .color2 {
   background-color: var(--color2);
+}
+
+.color3 {
+  background-color: greenyellow;
 }
 
 body {
