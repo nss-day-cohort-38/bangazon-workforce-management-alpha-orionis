@@ -11,8 +11,10 @@ body {
 
 .navList {
   list-style-type: none;
+  text-decoration: none ;
   display: flex;
   border: 1px solid lightgray;
+  justify-content: space-evenly;
   padding: 1em;
   margin: 0;
 }
@@ -21,9 +23,3 @@ body {
   margin: 0 0.5em;
 }
 
-.list_content {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
