@@ -1,6 +1,6 @@
 import sqlite3
 from django.shortcuts import render, redirect, reverse
-from hrapp.models import Computer
+from hrapp.models import Computer, Employee
 from ..connection import Connection
 
 def computer_list(request):
@@ -14,7 +14,6 @@ def computer_list(request):
                 c.id,
                 c.make,
                 c.purchase_date,
-                c.decommission_date,
                 c.manufacturer,
                 ec.computer_id,
                 ec.employee_id,
@@ -22,6 +21,7 @@ def computer_list(request):
                 e.last_name
             FROM hrapp_computer c
             LEFT JOIN hrapp_employeecomputer ec
+            ON c.id = ec.computer_id
             LEFT JOIN hrapp_employee e 
             ON ec.employee_id = e.id
             """)
@@ -34,8 +34,13 @@ def computer_list(request):
                 computer.id = row['id']
                 computer.make = row['make']
                 computer.purchase_date = row['purchase_date']
-                computer.decommission_date = row['decommission_date']
                 computer.manufacturer = row['manufacturer']
+
+                employee = Employee()
+                employee.first_name = row['first_name']
+                employee.last_name = row['last_name']
+
+                computer.employee = employee
 
                 all_computers.append(computer)
 

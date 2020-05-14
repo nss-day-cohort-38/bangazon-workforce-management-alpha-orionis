@@ -9,6 +9,7 @@
         <a href="{% url 'hrapp:computer_details' computer.id %}">
             <p>{{ computer.make }}</p>
         </a>
+        <p>{{ computer.employee.first_name }} {{ computer.employee.last_name }}</p>
     </li>
 {% endfor %}
 </ol>
