@@ -1,29 +1,33 @@
 {% extends 'shared/base.html' %}
+{% load static %}
 
 {% block content %}
-<h1>Training Programs</h1>
 <form action="{% url 'hrapp:training_form' %}" method='GET'>
-    <button>Create New Program</button>
+    <div class="page-header">Training Programs</div>
+    <section class="list-container">
+    <button class="bang-button color1 border-radius-top">create</button>
 </form>
+<div class="list-box">
 
-<ol>
     {% for program in programs %}
-    <li>
-        <p>
+  
+        <p class="list-row">
             {% if not past %}
-            <a href="{% url 'hrapp:training_detail' program.id %}"> {{ program.title }} </a>
+            <a class="list-title" href="{% url 'hrapp:training_detail' program.id %}"> {{ program.title }} </a>
             {% else %}
-            <a href="{% url 'hrapp:past_detail' program.id %}"> {{ program.title }} </a>
+            <a class="list-title" href="{% url 'hrapp:past_detail' program.id %}"> {{ program.title }} </a>
             {% endif %}
+        <a class="list-detail">{{program.start_date}}</a>
         </p>
-        Starting Date: {{program.start_date}}
-    </li>
+ 
     {% endfor %}
-</ol>
 
+
+</div>
 {% if not past %}
-<a href="{% url 'hrapp:training_past' %}"><button>See Past Programs</button></a>
+<a href="{% url 'hrapp:training_past' %}"><button class="bang-button color2 border-radius-bottom">past</button></a>
 {% else %}
-<a href="{% url 'hrapp:training' %}"><button>See Future Programs</button></a>
+<a href="{% url 'hrapp:training' %}"><button class="bang-button color2 border-radius-bottom">future</button></a>
+        </section>
 {% endif %}
 {% endblock content %}
