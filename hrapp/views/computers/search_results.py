@@ -1,6 +1,6 @@
 import sqlite3
 from django.shortcuts import render, redirect, reverse
-from hrapp.models import Computer
+from hrapp.models import Computer, Employee
 from ..connection import Connection
 
 def search_results(request):
@@ -16,8 +16,16 @@ def search_results(request):
                 c.make,
                 c.purchase_date,
                 c.decommission_date,
-                c.manufacturer
+                c.manufacturer,
+                ec.computer_id,
+                ec.employee_id,
+                e.first_name,
+                e.last_name
             FROM hrapp_computer c
+            LEFT JOIN hrapp_employeecomputer ec
+            ON c.id = ec.computer_id
+            LEFT JOIN hrapp_employee e 
+            ON ec.employee_id = e.id
             WHERE c.make = ? OR c.manufacturer = ?
             """, (form_data['search_term'], form_data['search_term'],))
 
@@ -31,6 +39,12 @@ def search_results(request):
                 computer.purchase_date = row['purchase_date']
                 computer.decommission_date = row['decommission_date']
                 computer.manufacturer = row['manufacturer']
+
+                employee = Employee()
+                employee.first_name = row['first_name']
+                employee.last_name = row['last_name']
+
+                computer.employee = employee
 
                 all_computers.append(computer)
 
