@@ -6,6 +6,7 @@ from hrapp.models import TrainingProgram, Employee
 from hrapp.models import model_factory
 from ..connection import Connection
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
 def get_program(program_id):
     with sqlite3.connect(Connection.db_path) as conn:
@@ -63,7 +64,7 @@ def get_program(program_id):
 
     return tprogram
 
-
+@login_required
 def program_details(request, program_id):
     if request.method == 'GET':
         program = get_program(program_id)
