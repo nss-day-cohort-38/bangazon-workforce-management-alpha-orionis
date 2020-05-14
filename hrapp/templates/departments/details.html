@@ -1,0 +1,25 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Departments</title>
+    </head>
+    <section>
+    
+        <h1>{{ department.name }}</h1>
+
+        <ul>
+            {% for employee in department.employees %}    
+            <li>  {{ employee.first_name }} {{ employee.last_name }}</li>
+            {% endfor %}
+        </ul> 
+    </section>
+</html>
+
+{% endblock content %}

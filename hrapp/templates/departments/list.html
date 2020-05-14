@@ -8,9 +8,9 @@
 <ol>
 {% for department in departments %}
     <li>
-        Department Name: {{ department.department_name }}</a>
+        Name:   <a href="{% url 'hrapp:department' department.id %}">{{ department.department_name }}</a>
         </br>
-        Budget: {{department.budget}}
+        Budget: ${{department.budget}}
     </li>
     </br>
 {% endfor %}
