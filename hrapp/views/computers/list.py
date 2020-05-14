@@ -16,11 +16,14 @@ def computer_list(request):
                 c.purchase_date,
                 c.decommission_date,
                 c.manufacturer,
-                ec.
+                ec.computer_id,
+                ec.employee_id,
                 e.first_name,
                 e.last_name
             FROM hrapp_computer c
-            LEFT JOIN hrapp_employee e
+            LEFT JOIN hrapp_employeecomputer ec
+            LEFT JOIN hrapp_employee e 
+            ON ec.employee_id = e.id
             """)
 
             all_computers = []
