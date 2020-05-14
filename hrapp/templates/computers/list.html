@@ -13,6 +13,9 @@
         {%else%}
             <p>{{ computer.make }}</p>
         {%endif%}
+        <p>{{ computer.employee.first_name }} {{ computer.employee.last_name }}</p>
+    </li>
+        
 {% endfor %}
 </div>
 

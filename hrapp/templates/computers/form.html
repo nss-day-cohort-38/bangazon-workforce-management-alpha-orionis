@@ -17,6 +17,20 @@
             <label for="manufacturer">Manufacturer:</label>
             <input id="manufacturer" type="text" name="manufacturer">
         </fieldset>
+        <fieldset>
+            <label for="employee">Assign Computer:</label>
+            <select id="employee" type="text" name="employee">
+                {% for employee in all_employees %}
+                    <option value="{{ employee.id }}">
+                        {{ employee.first_name }} {{ employee.last_name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </fieldset>
+        <fieldset>
+            <label>Assign Date:</label>
+            <input type="date" name="date" />
+        </fieldset>
 
         <input type="submit" value="Create" />
     </form>
