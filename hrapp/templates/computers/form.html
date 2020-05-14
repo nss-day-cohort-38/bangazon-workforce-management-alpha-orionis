@@ -1,7 +1,9 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
-    <h1>Add New Computer</h1>
+    <div class="page-header">Add New Computer</div>
+    <section class="list-container">
+    <div class="">
 
     <form action="{% url 'hrapp:computer_list' %}" method="POST">
         {% csrf_token %}
@@ -34,4 +36,5 @@
 
         <input type="submit" value="Create" />
     </form>
+    </section>
 {% endblock content %}
