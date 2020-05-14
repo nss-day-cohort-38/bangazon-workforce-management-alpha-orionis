@@ -5,11 +5,12 @@
 {% block content %}
 <h1>Departments</h1>
 
-{% if user.is_authenticated %}
 <ol>
 {% for department in departments %}
     <li>
+        {% if user.is_authenticated %}
         Name:   <a href="{% url 'hrapp:department' department.id %}">{{ department.department_name }}</a>
+        
         </br>
         Budget: ${{department.budget}}
     </li>
