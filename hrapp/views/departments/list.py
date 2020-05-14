@@ -13,10 +13,11 @@ def department_list(request):
 
 
             db_cursor.execute("""
-            SELECT department_name, budget, d.id
+            SELECT 
+                department_name, budget, d.id
             FROM hrapp_department d
             LEFT JOIN hrapp_employee e
-            ON e.id = d.id
+            ON e.department_id = d.id
             GROUP BY d.id;
             """)
 
