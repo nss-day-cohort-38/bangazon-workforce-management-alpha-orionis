@@ -1,19 +1,22 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
-<h1>Computers</h1>
+<div class="page-header">Computers</div>
+<section class="list-container">
+<div class="list-box">
 
-<ol>
 {% for computer in all_computers %}
-    <li>
+    
         <a href="{% url 'hrapp:computer_details' computer.id %}">
-            <p>{{ computer.make }}</p>
+            <p class="list-title">{{ computer.make }}</p>
         </a>
         <p>{{ computer.employee.first_name }} {{ computer.employee.last_name }}</p>
     </li>
 {% endfor %}
-</ol>
+</div>
 
-<a href="{% url 'hrapp:computer_form' %}"><button>Add Computer</button></a>
+
+<a href="{% url 'hrapp:computer_form' %}"><button class="bang-button color2 border-radius-bottom">Add</button></a>
 {% comment %} <button onclick="window.location.href='/departments/form'">Add Computer</button> {% endcomment %}
 {% endblock content %}
+</section>
