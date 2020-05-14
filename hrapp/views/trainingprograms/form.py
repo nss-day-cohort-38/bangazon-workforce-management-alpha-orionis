@@ -8,6 +8,7 @@ from ..connection import Connection
 # from .details import get_book
 from .details import get_program
 
+@login_required
 def training_form(request):
     if request.method == 'GET':
         template = 'trainingprograms/form.html'
@@ -15,6 +16,7 @@ def training_form(request):
 
         return render(request, template, context)
 
+@login_required
 def training_edit_form(request, program_id):
     if request.method == 'GET':
         program = get_program(program_id)

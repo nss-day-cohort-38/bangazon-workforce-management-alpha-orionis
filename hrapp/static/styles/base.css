@@ -1,3 +1,17 @@
+:root {
+  --color1: #3b8cf0;
+  --color2: rgb(77, 235, 247) ;
+}
+
+.color1 {
+  background-color: var(--color1);
+  color: white;
+}
+
+.color2 {
+  background-color: var(--color2);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -23,3 +37,74 @@ body {
   margin: 0 0.5em;
 }
 
+.page-header {
+  font-size: x-large;
+  padding-top: 30px;
+  margin: 15px 20px 20px 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  padding: 5% 0%;
+  border-bottom: solid gray 1px;
+}
+
+.list-box {
+  border: solid 0px black;
+  box-shadow: rgba(0, 0, 0, 0.146) 0px 20px 50px 5px;
+  padding: 1%;
+}
+
+.bang-button {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 10px;
+  margin: 0px 10px 0px 0px;
+  width: 50px;
+  text-align: center;
+
+}
+
+.bang-button:hover {
+  background-color: powderblue;
+}
+
+.border-radius-top {
+  border-radius: 20% 10% 0% 2%;
+}
+
+.border-radius-bottom {
+  border-radius: 0% 2% 20% 10% ;
+}
+
+.list-row {
+  background-color: rgba(193, 193, 193, 0.139);
+  /* padding: 4px 0px; */
+}
+
+.list-title {
+  font-size: large;
+  text-decoration: none;
+  color: black;
+  
+}
+
+.list-title:hover {
+  font-style: italic;
+  font-size: x-large;
+  font-weight: bold;
+  color: rgb(30, 105, 138);
+}
+
+.list-detail {
+  /* font-style: italic; */
+  font-size: small;
+  color: rgb(99, 97, 97);
+}
+
+.list-detail:hover {
+  /* font-size: x-large;
+  color: rgb(11, 184, 158); */
+}
+
+.list-container {
+  margin: 10px 0px 20px 50px;
+  max-width: 80%;
+}

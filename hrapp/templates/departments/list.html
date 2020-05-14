@@ -3,24 +3,21 @@
 
 
 {% block content %}
-<h1>Departments</h1>
+<div class="page-header">Departments</div>
 
-<ol>
+<section class="list-container">
+<div class="list-box">
 {% for department in departments %}
-    <li>
-        {% if user.is_authenticated %}
-        Name:   <a href="{% url 'hrapp:department' department.id %}">{{ department.department_name }}</a>
-        {%else%}
-        Name:  {{ department.department_name }}
-        {%endif%}
-        </br>
-        Budget: ${{department.budget}}
-    </li>
-    </br>
+    <p class="list-row">
+        <a class="list-title" href="{% url 'hrapp:department' department.id %}">{{ department.department_name }}</a>
+        
+        <a class="list-detail">Budget: ${{department.budget}}</a>
+    </p>
+    
 {% endfor %}
 
-</ol>
-{% if user.is_authenticated %}
-<button onclick="window.location.href='/departments/form'">Create Department</button>
-{%endif%}
+</div>
+<button class="bang-button color2 border-radius-bottom" onclick="window.location.href='/departments/form'">Add</button>
+</section>
+
 {% endblock content %}

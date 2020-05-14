@@ -1,28 +1,17 @@
 {% extends 'shared/base.html' %}
-{% load static %}
-
 {% block content %}
-<h1>Employees</h1>
+<div class="page-header">Employees</div>
 
-<ol class="list_content">
-{% if user.is_authenticated %}
-{% for employee in employees %}
-    <li>
-        <a href="{% url 'hrapp:employee' employee.employee_id %}"><p>{{ employee }}</p></a>
-        Department: {{employee.department.department_name}}
-    </li>
-{% endfor %}
-{%else%}
-{% for employee in employees %}
-    <li>
-        <p>{{ employee }}</p>
-        Department: {{employee.department.department_name}}
-    </li>
-{% endfor %}
-{%endif%}
-</ol>
 
-{% if user.is_authenticated %}
-<button onclick="window.location.href='/employee/form'">Add Employee</button>
-{% endif %}
+<section class="list-container">
+<div class="list-box">
+{% for employee in employees %}
+    <p class="list-row">
+        <a class="list-title" href="{% url 'hrapp:employee' employee.employee_id %}">{{ employee }}</a>
+        <a class="list-detail">Department: {{employee.department.department_name}}</a>
+    </p>
+{% endfor %}
+</div>
+<button class="bang-button color2 border-radius-bottom" onclick="window.location.href='/employee/form'">Add</button>
+</section>
 {% endblock content %}
