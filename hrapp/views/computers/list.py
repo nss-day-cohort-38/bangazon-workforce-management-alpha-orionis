@@ -62,7 +62,7 @@ def computer_list(request):
                 computer_id, employee_id,
                 assign_date
             )
-            VALUES ((SELECT * FROM hrapp_computer
+            VALUES ((SELECT c.id FROM hrapp_computer c
                      ORDER BY id DESC LIMIT 1), ?, ?)
             """,
             (form_data['employee'], 
