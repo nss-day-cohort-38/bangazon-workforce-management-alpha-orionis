@@ -4,8 +4,9 @@ from .db_manager.get_employee import get_employee
 from .db_manager.get_employee_computer import get_employee_computer
 from .db_manager.get_employee_programs import get_employee_programs
 from ..connection import Connection
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def employee_details(request, employee_id):
     if request.method == "GET":
         employee = get_employee(employee_id)

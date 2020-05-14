@@ -16,6 +16,7 @@ def computer_list(request):
                 c.purchase_date,
                 c.decommission_date,
                 c.manufacturer,
+                ec.
                 e.first_name,
                 e.last_name
             FROM hrapp_computer c
