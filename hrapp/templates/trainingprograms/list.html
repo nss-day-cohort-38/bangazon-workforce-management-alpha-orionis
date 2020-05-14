@@ -2,9 +2,11 @@
 
 {% block content %}
 <h1>Training Programs</h1>
+{% if user.is_authenticated %}
 <form action="{% url 'hrapp:training_form' %}" method='GET'>
     <button>Create New Program</button>
 </form>
+{% endif %}
 
 <ol>
     {% for program in programs %}
@@ -20,10 +22,11 @@
     </li>
     {% endfor %}
 </ol>
-
+{% if user.is_authenticated %}
 {% if not past %}
 <a href="{% url 'hrapp:training_past' %}"><button>See Past Programs</button></a>
 {% else %}
 <a href="{% url 'hrapp:training' %}"><button>See Future Programs</button></a>
+{% endif %}
 {% endif %}
 {% endblock content %}

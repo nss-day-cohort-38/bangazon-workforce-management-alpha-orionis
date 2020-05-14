@@ -12,7 +12,8 @@
     </li>
 {% endfor %}
 </ol>
-
+{% if user.is_authenticated %}
 <a href="{% url 'hrapp:computer_form' %}"><button>Add Computer</button></a>
 {% comment %} <button onclick="window.location.href='/departments/form'">Add Computer</button> {% endcomment %}
+{%endif%}
 {% endblock content %}

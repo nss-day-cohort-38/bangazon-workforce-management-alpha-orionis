@@ -5,6 +5,7 @@
 {% block content %}
 <h1>Departments</h1>
 
+{% if user.is_authenticated %}
 <ol>
 {% for department in departments %}
     <li>
@@ -14,7 +15,9 @@
     </li>
     </br>
 {% endfor %}
-</ol>
-<button onclick="window.location.href='/departments/form'">Create Department</button>
 
+</ol>
+{% if user.is_authenticated %}
+<button onclick="window.location.href='/departments/form'">Create Department</button>
+{%endif%}
 {% endblock content %}
